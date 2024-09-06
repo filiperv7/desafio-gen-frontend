@@ -30,8 +30,14 @@ button.button-primary {
 
   transition: 0.6s;
 }
-button.button-primary:hover {
+button.button-primary:hover:not(:disabled) {
   color: #a798fd;
 
   background-color: #fff;
+}
+button.button-primary:disabled {
+  background-color: #acacac;
+  border: solid 1.7px #acacac;
+
+  cursor: default;
 }

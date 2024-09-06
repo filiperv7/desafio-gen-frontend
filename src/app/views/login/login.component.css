@@ -1,0 +1,67 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 100%;
+}
+
+div.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+div.form-group {
+  display: flex;
+  flex-direction: column;
+
+  width: 98%;
+  max-width: 20rem;
+}
+
+.form-group > label {
+  position: relative;
+}
+.form-group label span.required {
+  font-size: 0.8rem;
+  color: #ff0000;
+
+  position: absolute;
+  top: 0;
+  padding-left: 0.09rem;
+}
+
+input.form-input {
+  width: 100%;
+  padding: 0.5rem;
+
+  border: 1px solid #a798fd;
+  border-radius: 5px;
+
+  outline: none;
+}
+
+div.error {
+  font-size: 0.7rem;
+  color: #fc5454;
+
+  margin-left: 0.2rem;
+  margin-top: 0.2rem;
+}
+
+p.notRegistered {
+  font-size: 0.85rem;
+}
+p.notRegistered a {
+  color: #a798fd;
+  font-weight: 600;
+}
+
+div.invalid-credentials {
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  margin: auto;
+}
