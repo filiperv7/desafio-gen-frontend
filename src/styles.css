@@ -4,3 +4,34 @@
 
   box-sizing: border-box;
 }
+
+button.button-primary {
+  max-width: 98%;
+  height: 3rem;
+  width: 11rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+
+  cursor: pointer;
+
+  border: solid 1.7px #a798fd;
+  border-radius: 0.4rem;
+
+  background-color: #a798fd;
+
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+
+  transition: 0.6s;
+}
+button.button-primary:hover {
+  color: #a798fd;
+
+  background-color: #fff;
+}

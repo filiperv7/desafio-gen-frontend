@@ -26,17 +26,17 @@
   box-shadow: 0px 0px 25px -10px #3d3763;
 }
 
-main .cta {
+.cta {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-main .cta h3 {
+.cta h3 {
   color: #646464;
   font-weight: 500;
 }
 
-main a {
+a.button-link {
   height: 3rem;
   width: 11rem;
 
@@ -60,7 +60,7 @@ main a {
 
   transition: 0.6s;
 }
-main a:hover {
+a.button-link:hover {
   color: #a798fd;
 
   background-color: #fff;
