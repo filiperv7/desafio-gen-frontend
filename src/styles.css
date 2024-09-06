@@ -41,3 +41,40 @@ button.button-primary:disabled {
 
   cursor: default;
 }
+
+div.error {
+  font-size: 0.7rem;
+  color: #fc5454;
+
+  margin-left: 0.2rem;
+  margin-top: 0.2rem;
+}
+
+p.notRegistered,
+p.login {
+  font-size: 0.85rem;
+}
+p.notRegistered a,
+p.login a {
+  color: #a798fd;
+  font-weight: 600;
+}
+
+div.invalid-credentials {
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  margin: auto;
+}
+
+@media (max-width: 425px) {
+  p,
+  label {
+    font-size: 0.9rem;
+  }
+
+  p.notRegistered,
+  p.login {
+    font-size: 0.7rem;
+  }
+}

@@ -1,0 +1,67 @@
+<app-container>
+  <h2>Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="inputs">
+      <div class="principal-inputs">
+        <div class="form-group">
+          <label for="nickName">Nickname<span class="required">*</span></label>
+          <input id="nickName" type="text" formControlName="nickName" class="form-control"
+            placeholder="Digite seu nickname" />
+          <div *ngIf="registerForm.get('nickName')?.invalid && registerForm.get('nickName')?.touched" class="error">
+            <div *ngIf="registerForm.get('nickName')?.errors?.['required']">Nickname é obrigatório</div>
+            <div *ngIf="registerForm.get('nickName')?.errors?.['minlength']">Nickname precisa ter mais de 6 caracteres
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password<span class="required">*</span></label>
+          <input id="password" type="password" formControlName="password" class="form-control"
+            placeholder="Digite sua senha" />
+          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+            <div *ngIf="registerForm.get('password')?.errors?.['required']">Senha é obrigatório</div>
+            <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Senha precisa ter mais de 8 caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group email">
+        <label for="email">Email<span class="required">*</span></label>
+        <input id="email" type="email" formControlName="email" class="form-control" placeholder="Digite seu email" />
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+          <div *ngIf="registerForm.get('email')?.errors?.['required']">Email é obrigatório</div>
+          <div *ngIf="registerForm.get('email')?.errors?.['email']">Formato de email inválido</div>
+        </div>
+      </div>
+
+      <div class="name-and-position">
+        <div class="form-group">
+          <label for="name">Name<span class="required">*</span></label>
+          <input id="name" type="text" formControlName="name" class="form-control" placeholder="Digite seu nome" />
+          <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">
+            <div *ngIf="registerForm.get('name')?.errors?.['required']">Name é obrigatório</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="position">Position<span class="required">*</span></label>
+          <input id="position" type="text" formControlName="position" class="form-control"
+            placeholder="Digite seu cargo" />
+          <div *ngIf="registerForm.get('position')?.invalid && registerForm.get('position')?.touched" class="error">
+            <div *ngIf="registerForm.get('position')?.errors?.['required']">Cargo é obrigatório</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="button-primary" [disabled]="registerForm.invalid">Cadastrar</button>
+
+    <div *ngIf="errorMessage" class="error invalid-credentials">
+      {{ errorMessage }}
+    </div>
+  </form>
+
+  <p class="login">Já tem uma conta? <a routerLink="/login">Faça o login</a>.</p>
+</app-container>

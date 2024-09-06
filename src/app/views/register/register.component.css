@@ -1,7 +1,7 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   width: 100%;
 }
@@ -10,7 +10,16 @@ div.inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.6rem;
+}
+
+.inputs .principal-inputs,
+.inputs .name-and-position {
+  display: flex;
+  flex-grow: 1;
   gap: 1rem;
+
+  width: 98%;
 }
 
 div.form-group {
@@ -18,7 +27,6 @@ div.form-group {
   flex-direction: column;
 
   width: 98%;
-  max-width: 20rem;
 }
 
 .form-group > label {
@@ -33,7 +41,7 @@ div.form-group {
   padding-left: 0.09rem;
 }
 
-input.form-input {
+input.form-control {
   width: 100%;
   padding: 0.5rem;
 
