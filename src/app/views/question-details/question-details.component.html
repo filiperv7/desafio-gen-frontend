@@ -13,7 +13,7 @@
     <div class="question">
       <h2>{{ question?.title }}</h2>
       <div class="infos-question">
-        <p class="author-question">Autor: {{ question?.user?.name }}</p>
+        <p class="author-question">Autor: {{ question?.user?.nick_name }}</p>
         <p class="question-time">{{ question?.creation_date | date: 'dd/MM/yyyy' }}</p>
       </div>
 
@@ -36,8 +36,14 @@
       <div class="answers-cards" *ngIf="question.answers.length > 0; else noAnswers">
         <div *ngFor="let answer of question.answers" class="answer-card">
           <div class="infos-answer">
-            <p class="author-answer">{{ answer.user?.name }}</p>
-            <p class="question-time">{{ answer.creation_date | date: 'dd/MM/yyyy' }}</p>
+            <p class="author-answer">{{ answer.user?.nick_name }}</p>
+            <span>
+              <div class="actions" *ngIf="canDelete(answer.user.id)">
+                <button class=" button-action" (click)="showDeleteConfirmation(answer.id)">Excluir</button>
+              </div>
+
+              <p class="question-time">{{ answer.creation_date | date: 'dd/MM/yyyy' }}</p>
+            </span>
           </div>
           <p>{{ answer.content }}</p>
         </div>
@@ -53,3 +59,13 @@
 <ng-template #loading>
   <p>Carregando...</p>
 </ng-template>
+
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <p>Você realmente deseja excluir esta resposta?</p>
+    <div class="buttons">
+      <button (click)="confirmDelete()">Sim</button>
+      <button (click)="cancelDelete()">Não</button>
+    </div>
+  </div>
+</div>

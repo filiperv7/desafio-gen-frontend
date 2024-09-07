@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnswersService } from '../../services/answers.service';
+import { DecodeTokenService } from '../../services/decode-token.service';
 import { QuestionsService } from '../../services/questions.service';
 
 @Component({
@@ -14,16 +16,23 @@ import { QuestionsService } from '../../services/questions.service';
 export class QuestionDetailsComponent implements OnInit {
   question: any;
   errorMessage: string | null = null;
+  userId: number | undefined;
   showReply: boolean = false;
   newAnswer: string = '';
+  showModal: boolean = false;
+  answerToDeleteId: number | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private questionsService: QuestionsService,
+    private answersService: AnswersService,
+    private decodeTokenService: DecodeTokenService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.decodeTokenService.decodeToken();
+
     this.loadQuestion();
   }
 
@@ -55,7 +64,7 @@ export class QuestionDetailsComponent implements OnInit {
         question_id: this.question.id,
       };
 
-      this.questionsService.createAnswer(createAnswerInput).subscribe({
+      this.answersService.createAnswer(createAnswerInput).subscribe({
         next: (response) => {
           this.newAnswer = '';
           this.showReply = false;
@@ -67,5 +76,33 @@ export class QuestionDetailsComponent implements OnInit {
         },
       });
     }
+  }
+
+  canDelete(answerUserId: number) {
+    return this.userId === answerUserId;
+  }
+
+  showDeleteConfirmation(answerId: number) {
+    this.answerToDeleteId = answerId;
+    this.showModal = true;
+  }
+
+  confirmDelete() {
+    if (this.answerToDeleteId !== null) {
+      this.answersService.removeAnswer(this.answerToDeleteId).subscribe({
+        next: () => {
+          this.showModal = false;
+
+          window.location.reload();
+        },
+        error: (error) => {
+          this.errorMessage = 'Erro ao excluir a resposta.';
+        },
+      });
+    }
+  }
+
+  cancelDelete() {
+    this.showModal = false;
   }
 }

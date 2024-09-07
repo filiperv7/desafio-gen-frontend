@@ -161,6 +161,18 @@ div.infos-question p {
   opacity: 0.8;
 }
 
+div.infos-answer span {
+  display: flex;
+  align-items: center;
+
+  gap: 0.6rem;
+}
+div.infos-answer span .button-action {
+  padding: 0.1rem;
+
+  cursor: pointer;
+}
+
 .no-answers {
   font-style: italic;
 }

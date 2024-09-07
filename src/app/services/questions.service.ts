@@ -69,16 +69,18 @@ export class QuestionsService {
           description
           creation_date
           user {
-            name
+            nick_name
           }
           tags {
             tag_name
           }
           answers {
+            id
             content
             creation_date
             user {
-              name
+              id
+              nick_name
             }
           }
         }
@@ -89,34 +91,6 @@ export class QuestionsService {
       query: QUESTION_QUERY,
       variables: {
         questionId: questionId,
-      },
-    });
-  }
-
-  createAnswer(createAnswerInput: {
-    content: string;
-    question_id: number;
-  }): Observable<any> {
-    const token = localStorage.getItem('token');
-
-    const CREATE_ANSWER_MUTATION = gql`
-      mutation CreateAnswer($createAnswerInput: CreateAnswerInput!) {
-        createAnswer(createAnswerInput: $createAnswerInput) {
-          id
-          content
-        }
-      }
-    `;
-
-    return this.apollo.mutate({
-      mutation: CREATE_ANSWER_MUTATION,
-      variables: {
-        createAnswerInput: createAnswerInput,
-      },
-      context: {
-        headers: {
-          Authorization: token,
-        },
       },
     });
   }
