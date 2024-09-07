@@ -22,6 +22,7 @@ export class QuestionsService {
           description
           creation_date
           user {
+            id
             nick_name
           }
           tags {

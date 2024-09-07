@@ -247,6 +247,33 @@ a.question-link {
   color: #000;
 }
 
+div.infos-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  opacity: 0.8;
+
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+div.infos-question .actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  z-index: 10;
+}
+
+.actions .button-action {
+  padding: 0.1rem;
+
+  cursor: pointer;
+}
+
 .tags {
   display: flex;
   gap: 0.5rem;

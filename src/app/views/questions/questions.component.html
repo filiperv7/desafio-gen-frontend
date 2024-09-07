@@ -41,8 +41,18 @@
     <div *ngFor="let question of questions" class="question-card">
       <a [routerLink]="['/questions', question.id]" class="question-link">
         <h3>{{ question.title }}</h3>
-        <p>Autor: {{ question.user.nick_name }}</p>
-        <p>{{ question.creation_date | date:'dd/MM/yyyy' }}</p>
+
+        <div class="infos-question">
+          <div class="infos">
+            <p>Autor: {{ question.user.nick_name }}</p>
+            <p>{{ question.creation_date | date:'dd/MM/yyyy' }}</p>
+          </div>
+
+          <div class="actions" *ngIf="canEditOrDelete(question.user.id)">
+            <button class="button-action">Editar</button>
+            <button class="button-action">Excluir</button>
+          </div>
+        </div>
 
         <div class="tags">
           <span *ngFor="let tag of question.tags" class="tag">{{ tag.tag_name }}</span>

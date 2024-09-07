@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { DecodeTokenService } from '../../services/decode-token.service';
 import { QuestionsService } from '../../services/questions.service';
 
 type searchInput = {
@@ -16,6 +17,7 @@ type searchInput = {
   styleUrl: './questions.component.css',
 })
 export class QuestionsComponent implements OnInit {
+  userId: number | undefined;
   questions: any[] = [];
   errorMessage: string | null = null;
   onlyMine: boolean | undefined;
@@ -25,10 +27,13 @@ export class QuestionsComponent implements OnInit {
 
   constructor(
     private questionsService: QuestionsService,
+    private decodeTokenService: DecodeTokenService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.decodeTokenService.decodeToken();
+
     this.getQuestions();
     this.getTags();
   }
@@ -98,6 +103,10 @@ export class QuestionsComponent implements OnInit {
         this.errorMessage = 'Erro ao carregar perguntas';
       },
     });
+  }
+
+  canEditOrDelete(questionUserId: number): boolean {
+    return this.userId === questionUserId;
   }
 
   openModal() {
