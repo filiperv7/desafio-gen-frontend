@@ -1,3 +1,13 @@
+<header>
+  <div class="container-header">
+    <button class="back-button" (click)="goBack()">
+      &#8592;
+    </button>
+
+    <button class="reply-button" (click)="toggleReply()">Responder</button>
+  </div>
+</header>
+
 <div class="container">
   <main *ngIf="question; else loading">
     <div class="question">
@@ -16,6 +26,10 @@
       </section>
     </div>
 
+    <section class="new-answer" *ngIf="showReply">
+      <textarea [(ngModel)]="newAnswer" placeholder="Escreva sua resposta..."></textarea>
+      <button class="send-button" (click)="submitAnswer()">Enviar</button>
+    </section>
 
     <section class="answers">
       <h3>Respostas</h3>

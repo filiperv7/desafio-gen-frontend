@@ -1,3 +1,47 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 90%;
+  max-width: 30rem;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.6rem;
+}
+
+header .container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  padding: 0.4rem;
+}
+
+header .back-button {
+  background: none;
+  border: none;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+header .reply-button {
+  background-color: #a798fd;
+  border: none;
+  border-radius: 0.4rem;
+
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+
+  color: white;
+  font-size: 0.85rem;
+}
+
 div.container {
   display: flex;
   justify-content: center;
@@ -44,6 +88,45 @@ section.description {
   color: #6e6e6e;
 }
 
+.new-answer {
+  position: relative;
+  display: inline-block;
+}
+
+section textarea {
+  box-sizing: border-box;
+  max-width: 30rem;
+  width: 100%;
+  height: 7rem;
+
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  outline: none;
+
+  transition: 0.5s;
+}
+section textarea:focus {
+  border: solid 1.7px #a798fd;
+}
+
+.send-button {
+  position: absolute;
+  right: 0;
+  bottom: 0.4rem;
+
+  background-color: #a798fd;
+  color: #fff;
+
+  border: solid 1.7px #a798fd;
+  border-radius: 4px;
+
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
 .answers-cards {
   margin-top: 0.4rem;
 
@@ -53,6 +136,10 @@ section.description {
 }
 
 .answer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
   background-color: #f9f9f9;
   padding: 1rem;
 
@@ -76,7 +163,4 @@ div.infos-question p {
 
 .no-answers {
   font-style: italic;
-}
-
-@media (max-width: 425px) {
 }

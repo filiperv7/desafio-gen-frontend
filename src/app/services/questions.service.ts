@@ -91,4 +91,32 @@ export class QuestionsService {
       },
     });
   }
+
+  createAnswer(createAnswerInput: {
+    content: string;
+    question_id: number;
+  }): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    const CREATE_ANSWER_MUTATION = gql`
+      mutation CreateAnswer($createAnswerInput: CreateAnswerInput!) {
+        createAnswer(createAnswerInput: $createAnswerInput) {
+          id
+          content
+        }
+      }
+    `;
+
+    return this.apollo.mutate({
+      mutation: CREATE_ANSWER_MUTATION,
+      variables: {
+        createAnswerInput: createAnswerInput,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
+  }
 }
