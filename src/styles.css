@@ -128,3 +128,19 @@ div.invalid-credentials {
 .modal-content button:last-child {
   background-color: #a798fd;
 }
+
+.button-action {
+  text-decoration: underline;
+
+  border: none;
+  border-radius: 0.6rem;
+
+  color: #9280f8;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+a.delete {
+  color: #fc5454;
+}
