@@ -49,7 +49,6 @@ export class RegisterComponent {
         .register(nickName, email, name, position, password)
         .subscribe(
           (response) => {
-            console.log('Registration successful', response);
             this.router.navigate(['/login']);
           },
           (error) => {
