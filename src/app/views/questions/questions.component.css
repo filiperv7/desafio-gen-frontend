@@ -264,8 +264,6 @@ div.infos-question .actions {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-
-  z-index: 10;
 }
 
 .actions .button-action {
@@ -312,5 +310,20 @@ p.no-questions {
 
   a.new-question {
     margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 445px) {
+  .tags span {
+    font-size: 0.7rem;
+  }
+
+  div.infos-question p {
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .question-card h3 {
+    font-size: 1rem;
   }
 }
