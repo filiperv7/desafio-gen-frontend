@@ -19,26 +19,13 @@
   <a routerLink="/new-question" class="new-question">Nova pergunta</a>
 </header>
 
-<div *ngIf="showModal" class="modal">
-  <div class="modal-content">
-    <p>Você realmente deseja sair?</p>
-    <div class="buttons">
-      <button (click)="confirmExit()">Sim</button>
-      <button (click)="cancelExit()">Não</button>
-    </div>
-  </div>
-</div>
+<app-confirmation-modal [show]="showModal" message="Você realmente deseja sair?" (confirm)="confirmExit()"
+  (cancel)="cancelExit()">
+</app-confirmation-modal>
 
-<div *ngIf="showDeleteModal" class="modal">
-  <div class="modal-content">
-    <p>Você realmente deseja excluir esta pergunta?</p>
-    <div class="buttons">
-      <button (click)="confirmDelete()">Sim</button>
-      <button (click)="closeDeleteModal()">Não</button>
-    </div>
-  </div>
-</div>
-
+<app-confirmation-modal [show]="showDeleteModal" message="Você realmente deseja excluir esta pergunta?"
+  (confirm)="confirmDelete()" (cancel)="closeDeleteModal()">
+</app-confirmation-modal>
 
 <main>
   <div class="tags-container">

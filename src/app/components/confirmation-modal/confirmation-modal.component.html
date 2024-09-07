@@ -1,0 +1,9 @@
+<div class="modal" *ngIf="show">
+  <div class="modal-content">
+    <p>{{ message }}</p>
+    <div class="buttons">
+      <button (click)="onConfirm()">Sim</button>
+      <button (click)="onCancel()">Não</button>
+    </div>
+  </div>
+</div>

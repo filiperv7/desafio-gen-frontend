@@ -59,12 +59,6 @@
   <p>Carregando...</p>
 </ng-template>
 
-<div *ngIf="showModal" class="modal">
-  <div class="modal-content">
-    <p>Você realmente deseja excluir esta resposta?</p>
-    <div class="buttons">
-      <button (click)="confirmDelete()">Sim</button>
-      <button (click)="cancelDelete()">Não</button>
-    </div>
-  </div>
-</div>
+<app-confirmation-modal [show]="showModal" message="Você realmente deseja excluir esta resposta?"
+  (confirm)="confirmDelete()" (cancel)="cancelDelete()">
+</app-confirmation-modal>

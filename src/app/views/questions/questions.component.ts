@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { ConfirmationModalComponent } from '../../components/confirmation-modal/confirmation-modal.component';
 import { DecodeTokenService } from '../../services/decode-token.service';
 import { QuestionsService } from '../../services/questions.service';
 
@@ -12,7 +13,7 @@ type searchInput = {
 @Component({
   selector: 'app-questions',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ConfirmationModalComponent],
   templateUrl: './questions.component.html',
   styleUrl: './questions.component.css',
 })
@@ -23,8 +24,8 @@ export class QuestionsComponent implements OnInit {
   onlyMine: boolean | undefined;
   filterTagIds: number[] = [];
   tags: any[] = [];
-  showModal: boolean = false;
-  showDeleteModal: boolean = false;
+  showModal = false;
+  showDeleteModal = false;
   questionToDeleteId: number | null = null;
 
   constructor(
