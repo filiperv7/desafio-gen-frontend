@@ -1,0 +1,41 @@
+<div class="container">
+  <main *ngIf="question; else loading">
+    <div class="question">
+      <h2>{{ question?.title }}</h2>
+      <div class="infos-question">
+        <p class="author-question">Autor: {{ question?.user?.name }}</p>
+        <p class="question-time">{{ question?.creation_date | date: 'dd/MM/yyyy' }}</p>
+      </div>
+
+      <div class="tags">
+        <span *ngFor="let tag of question?.tags" class="tag">{{ tag.tag_name }}</span>
+      </div>
+
+      <section class="description">
+        <p>{{ question.description }}</p>
+      </section>
+    </div>
+
+
+    <section class="answers">
+      <h3>Respostas</h3>
+      <div class="answers-cards" *ngIf="question.answers.length > 0; else noAnswers">
+        <div *ngFor="let answer of question.answers" class="answer-card">
+          <div class="infos-answer">
+            <p class="author-answer">{{ answer.user?.name }}</p>
+            <p class="question-time">{{ answer.creation_date | date: 'dd/MM/yyyy' }}</p>
+          </div>
+          <p>{{ answer.content }}</p>
+        </div>
+      </div>
+
+      <ng-template #noAnswers>
+        <p class="no-answers">Nenhuma resposta encontrada.</p>
+      </ng-template>
+    </section>
+  </main>
+</div>
+
+<ng-template #loading>
+  <p>Carregando...</p>
+</ng-template>

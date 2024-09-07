@@ -58,4 +58,37 @@ export class QuestionsService {
       query: TAGS_QUERY,
     });
   }
+
+  getQuestionById(questionId: number): Observable<any> {
+    const QUESTION_QUERY = gql`
+      query Question($questionId: Int!) {
+        question(id: $questionId) {
+          id
+          title
+          description
+          creation_date
+          user {
+            name
+          }
+          tags {
+            tag_name
+          }
+          answers {
+            content
+            creation_date
+            user {
+              name
+            }
+          }
+        }
+      }
+    `;
+
+    return this.apollo.query({
+      query: QUESTION_QUERY,
+      variables: {
+        questionId: questionId,
+      },
+    });
+  }
 }
