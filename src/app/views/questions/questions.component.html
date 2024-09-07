@@ -1,6 +1,11 @@
 <header>
   <div class="container">
-    <h2>Questions</h2>
+    <div>
+      <button class="back-button" (click)="openModal()">
+        &#8592;
+      </button>
+      <h2>Questions</h2>
+    </div>
 
     <div class="toggle-container">
       <label class="switch">
@@ -13,6 +18,14 @@
 
   <a routerLink="/new-question" class="new-question">Nova pergunta</a>
 </header>
+
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <p>Você realmente deseja sair?</p>
+    <button (click)="confirmExit()">Sim</button>
+    <button (click)="cancelExit()">Não</button>
+  </div>
+</div>
 
 <main>
   <div class="tags-container">

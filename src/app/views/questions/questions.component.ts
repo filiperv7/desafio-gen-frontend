@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { QuestionsService } from '../../services/questions.service';
 
 type searchInput = {
@@ -21,8 +21,12 @@ export class QuestionsComponent implements OnInit {
   onlyMine: boolean | undefined;
   filterTagIds: number[] = [];
   tags: any[] = [];
+  showModal: boolean = false;
 
-  constructor(private questionsService: QuestionsService) {}
+  constructor(
+    private questionsService: QuestionsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getQuestions();
@@ -94,5 +98,19 @@ export class QuestionsComponent implements OnInit {
         this.errorMessage = 'Erro ao carregar perguntas';
       },
     });
+  }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  confirmExit() {
+    localStorage.removeItem('token');
+    this.showModal = false;
+    this.router.navigate(['/']);
+  }
+
+  cancelExit() {
+    this.showModal = false;
   }
 }
