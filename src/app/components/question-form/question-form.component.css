@@ -1,0 +1,130 @@
+a.back-button {
+  background: none;
+  border: none;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  text-decoration: none;
+  color: #000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+div.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+div.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  max-width: 20rem;
+}
+
+.form-group > label {
+  position: relative;
+}
+
+.form-group label span.required {
+  font-size: 0.8rem;
+  color: #ff0000;
+  position: absolute;
+  top: 0;
+  padding-left: 0.09rem;
+}
+
+input.form-input,
+textarea.form-input,
+ng-select.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #a798fd;
+  border-radius: 5px;
+  outline: none;
+}
+
+textarea.form-input {
+  height: 5rem;
+}
+
+ng-select.form-input .ng-value {
+  background-color: #d0ccff;
+  border-radius: 5px;
+  padding: 0.3rem;
+  margin: 0.1rem;
+}
+
+ng-select.form-input .ng-value-label {
+  color: #4a3fb6;
+  font-weight: bold;
+}
+
+.error {
+  color: #ff0000;
+  font-size: 0.8rem;
+}
+
+.invalid-credentials {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.button-add {
+  z-index: 1000;
+  background-color: red;
+}
+
+::ng-deep .ng-dropdown-panel {
+  background-color: #f0f0f0;
+  margin-top: 0.5rem;
+  max-height: 8rem;
+
+  overflow-y: auto;
+}
+
+::ng-deep .ng-select .ng-value {
+  display: flex;
+  align-items: center;
+  margin: 0.2rem;
+
+  background-color: #d0ccff;
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+
+  font-size: 0.85rem;
+}
+
+::ng-deep .ng-select .ng-value-icon {
+  font-size: 1.5rem;
+
+  margin-right: 0.4rem;
+}
+
+::ng-deep .ng-select .ng-value-label {
+  color: #6a5bd6;
+  font-weight: 900;
+}
+
+::ng-deep .ng-select .ng-value-icon {
+  margin-left: 0.4rem;
+}
+
+::ng-deep .ng-select .ng-option {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+::ng-deep .ng-select .ng-option:hover {
+  background-color: #d9d9d9;
+}

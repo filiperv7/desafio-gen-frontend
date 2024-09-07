@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { Tag } from '../components/question-form/question-form.component';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +61,22 @@ export class QuestionsService {
     });
   }
 
+  getTagsDropDown(): Observable<Tag[]> {
+    const TAGS_QUERY = gql`
+      query Tags {
+        tags {
+          id
+          tag_name
+        }
+      }
+    `;
+    return this.apollo
+      .query<{ tags: Tag[] }>({
+        query: TAGS_QUERY,
+      })
+      .pipe(map((result) => result.data.tags || []));
+  }
+
   getQuestionById(questionId: number): Observable<any> {
     const QUESTION_QUERY = gql`
       query Question($questionId: Int!) {
@@ -91,6 +108,52 @@ export class QuestionsService {
       query: QUESTION_QUERY,
       variables: {
         questionId: questionId,
+      },
+    });
+  }
+
+  createQuestion(input: any) {
+    const token = localStorage.getItem('token');
+
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation CreateQuestion($createQuestionInput: CreateQuestionInput!) {
+          createQuestion(createQuestionInput: $createQuestionInput) {
+            id
+            title
+            description
+            tags {
+              id
+              tag_name
+            }
+          }
+        }
+      `,
+      variables: { createQuestionInput: input },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
+  }
+
+  updateQuestion(input: any) {
+    const token = localStorage.getItem('token');
+
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation UpdateQuestion($updateQuestionInput: UpdateQuestionInput!) {
+          updateQuestion(updateQuestionInput: $updateQuestionInput) {
+            title
+          }
+        }
+      `,
+      variables: { updateQuestionInput: input },
+      context: {
+        headers: {
+          Authorization: token,
+        },
       },
     });
   }

@@ -1,9 +1,9 @@
 <header>
   <div class="container">
     <div>
-      <button class="back-button" (click)="openModal()">
+      <a class="back-button" (click)="openModal()">
         &#8592;
-      </button>
+      </a>
       <h2>Questions</h2>
     </div>
 
@@ -22,8 +22,10 @@
 <div *ngIf="showModal" class="modal">
   <div class="modal-content">
     <p>Você realmente deseja sair?</p>
-    <button (click)="confirmExit()">Sim</button>
-    <button (click)="cancelExit()">Não</button>
+    <div class="buttons">
+      <button (click)="confirmExit()">Sim</button>
+      <button (click)="cancelExit()">Não</button>
+    </div>
   </div>
 </div>
 
@@ -49,8 +51,8 @@
           </div>
 
           <div class="actions" *ngIf="canEditOrDelete(question.user.id)">
-            <button class="button-action">Editar</button>
-            <button class="button-action">Excluir</button>
+            <a class="button-action" [routerLink]="['/edit-question', question.id]">Editar</a>
+            <a class="button-action delete">Excluir</a>
           </div>
         </div>
 
