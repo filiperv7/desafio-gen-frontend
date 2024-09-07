@@ -24,6 +24,8 @@ export class QuestionsComponent implements OnInit {
   filterTagIds: number[] = [];
   tags: any[] = [];
   showModal: boolean = false;
+  showDeleteModal: boolean = false;
+  questionToDeleteId: number | null = null;
 
   constructor(
     private questionsService: QuestionsService,
@@ -121,5 +123,33 @@ export class QuestionsComponent implements OnInit {
 
   cancelExit() {
     this.showModal = false;
+  }
+
+  openDeleteModal(questionId: number) {
+    this.questionToDeleteId = questionId;
+    this.showDeleteModal = true;
+  }
+
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.questionToDeleteId = null;
+  }
+
+  confirmDelete() {
+    if (this.questionToDeleteId !== null) {
+      this.questionsService.removeQuestion(this.questionToDeleteId).subscribe({
+        next: () => {
+          this.questions = this.questions.filter(
+            (question) => question.id !== this.questionToDeleteId
+          );
+
+          this.closeDeleteModal();
+        },
+        error: (error) => {
+          console.error('Erro ao excluir pergunta', error);
+          this.errorMessage = 'Erro ao excluir pergunta';
+        },
+      });
+    }
   }
 }

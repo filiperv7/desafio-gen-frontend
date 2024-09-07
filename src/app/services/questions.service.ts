@@ -26,6 +26,9 @@ export class QuestionsService {
             id
             nick_name
           }
+          answers {
+            content
+          }
           tags {
             id
             tag_name
@@ -150,6 +153,27 @@ export class QuestionsService {
         }
       `,
       variables: { updateQuestionInput: input },
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    });
+  }
+
+  removeQuestion(questionId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation RemoveQuestion($removeQuestionId: Int!) {
+          removeQuestion(id: $removeQuestionId) {
+            id
+            title
+          }
+        }
+      `,
+      variables: { removeQuestionId: questionId },
       context: {
         headers: {
           Authorization: token,

@@ -190,6 +190,8 @@ main > div {
 }
 
 .question-card {
+  position: relative;
+
   border: 1.5px solid #a798fd;
   border-radius: 8px;
   padding: 1rem;
@@ -216,10 +218,16 @@ div.infos-question {
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
 }
-div.infos-question .actions {
+
+div.actions {
+  position: absolute;
+
   display: flex;
   align-items: center;
   gap: 0.4rem;
+
+  right: 0.5rem;
+  top: 3rem;
 }
 
 .button-action {

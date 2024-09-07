@@ -29,6 +29,17 @@
   </div>
 </div>
 
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <p>Você realmente deseja excluir esta pergunta?</p>
+    <div class="buttons">
+      <button (click)="confirmDelete()">Sim</button>
+      <button (click)="closeDeleteModal()">Não</button>
+    </div>
+  </div>
+</div>
+
+
 <main>
   <div class="tags-container">
     <div class="tags" *ngIf="tags.length > 0">
@@ -49,17 +60,18 @@
             <p>{{ question.user.nick_name }}</p>
             <p>{{ question.creation_date | date:'dd/MM/yyyy' }}</p>
           </div>
-
-          <div class="actions" *ngIf="canEditOrDelete(question.user.id)">
-            <a class="button-action" [routerLink]="['/edit-question', question.id]">Editar</a>
-            <a class="button-action delete">Excluir</a>
-          </div>
         </div>
 
         <div class="tags">
           <span *ngFor="let tag of question.tags" class="tag">{{ tag.tag_name }}</span>
         </div>
       </a>
+
+      <div class="actions" *ngIf="canEditOrDelete(question.user.id)">
+        <a class="button-action" *ngIf="!question.answers.length"
+          [routerLink]="['/edit-question', question.id]">Editar</a>
+        <a class="button-action delete" (click)="openDeleteModal(question.id)">Excluir</a>
+      </div>
     </div>
   </div>
 
