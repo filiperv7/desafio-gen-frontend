@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AnswersService } from '../../services/answers.service';
 import { DecodeTokenService } from '../../services/decode-token.service';
 import { QuestionsService } from '../../services/questions.service';
@@ -9,7 +9,7 @@ import { QuestionsService } from '../../services/questions.service';
 @Component({
   selector: 'app-question-details',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './question-details.component.html',
   styleUrl: './question-details.component.css',
 })

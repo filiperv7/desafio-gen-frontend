@@ -28,6 +28,9 @@ header .back-button {
   font-weight: 700;
 
   cursor: pointer;
+
+  text-decoration: none;
+  color: #000;
 }
 
 header .reply-button {
