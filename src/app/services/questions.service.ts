@@ -51,6 +51,8 @@ export class QuestionsService {
   }
 
   getTags(): Observable<any> {
+    const token = localStorage.getItem('token');
+
     const TAGS_QUERY = gql`
       query Tags {
         tags {
@@ -61,10 +63,17 @@ export class QuestionsService {
     `;
     return this.apollo.query({
       query: TAGS_QUERY,
+      context: {
+        headers: {
+          Authorization: token,
+        },
+      },
     });
   }
 
   getTagsDropDown(): Observable<Tag[]> {
+    const token = localStorage.getItem('token');
+
     const TAGS_QUERY = gql`
       query Tags {
         tags {
@@ -76,11 +85,18 @@ export class QuestionsService {
     return this.apollo
       .query<{ tags: Tag[] }>({
         query: TAGS_QUERY,
+        context: {
+          headers: {
+            Authorization: token,
+          },
+        },
       })
       .pipe(map((result) => result.data.tags || []));
   }
 
   getQuestionById(questionId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+
     const QUESTION_QUERY = gql`
       query Question($questionId: Int!) {
         question(id: $questionId) {
@@ -111,6 +127,11 @@ export class QuestionsService {
       query: QUESTION_QUERY,
       variables: {
         questionId: questionId,
+      },
+      context: {
+        headers: {
+          Authorization: token,
+        },
       },
     });
   }
