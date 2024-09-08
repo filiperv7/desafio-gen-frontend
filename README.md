@@ -24,6 +24,11 @@ A aplicação tem como foco em ajudar nos estudos dos devs, com a oportunidade d
 11. Uma resposta só pode ser excluída pelo seu próprio autor.
 
 
+## Algumas decisões e observações
+Dividi a aplicação entre componentes reutilizáveis, inclusive a moldura de algumas telas, views para cada página e services, para fazer as requisições GraphQL com o Apollo.
+
+Decidi usar CSS puro, sem nenhum framework.
+
 ## Como rodar a aplicação
 
 ##### - Clone o projeto
