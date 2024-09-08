@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GraphQLError } from 'graphql';
 import { QuestionFormComponent } from '../../components/question-form/question-form.component';
 import { QuestionsService } from '../../services/questions.service';
 
@@ -11,6 +12,8 @@ import { QuestionsService } from '../../services/questions.service';
   styleUrls: ['./new-question.component.css'],
 })
 export class NewQuestionComponent {
+  errorMessage: string | undefined;
+
   constructor(
     private questionsService: QuestionsService,
     private router: Router
@@ -21,8 +24,9 @@ export class NewQuestionComponent {
       next: (response) => {
         this.router.navigate(['/questions']);
       },
-      error: (error) => {
-        console.error('Erro ao criar pergunta', error);
+      error: (error: { graphQLErrors?: GraphQLError[] }) => {
+        const graphQLErrors = error?.graphQLErrors || [];
+        this.errorMessage = graphQLErrors.map((e) => e.message).join(', ');
       },
     });
   }
