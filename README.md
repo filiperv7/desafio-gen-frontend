@@ -1,27 +1,49 @@
-# DesafioGenFrontend
+# Bem vindo(a)
+Esta é uma aplicação Angular com GraphQL e Apollo Client.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+#### Aqui está o [Back-end](https://github.com/filiperv7/desafio-gen-backend/) desta aplicação.
 
-## Development server
+A aplicação tem como foco em ajudar nos estudos dos devs, com a oportunidade de tirar dúvidas com pessoas mais experiêntes. Funciona assim:
+- crie sua conta;
+- faça login;
+- navegue pelas perguntas existentes; ou
+- faça um nova pergunta;
+- você também pode responder perguntas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Regras de negócio
+1. Os recursos de perguntas e respostas só estão disponíveis para usuários autenticados com token JWT válido.
+2. Para criar um pergunta o usuário deve, obrigatóriamente, preeencher o titulo, descrição e alguma tag.
+3. Para criar um pergunta é obrigatório adicionar pelo menos 1 tag relacionada ao assunto e no máximo 3.
+4. Uma pergunta só pode ser editada pelo seu próprio autor.
+5. Uma pergunta só pode ser editada se ainda não tiver nenhuma resposta.
+6. Ao editar uma pergunta, todas as regras de criação são válidas aqui também.
+7. Uma pergunta só pode ser excluída pelo seu próprio autor.
+8. Ao excluir uma pergunta, suas respostas, caso existem, também são excluídas do banco.
+9. Você pode responder as perguntas de qualquer pessoa, inclusive as suas.
+10. Ninguém pode editar nenhuma resposta.
+11. Uma resposta só pode ser excluída pelo seu próprio autor.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Como rodar a aplicação
 
-## Build
+##### - Clone o projeto
+```bash
+git clone https://github.com/filiperv7/desafio-gen-frontend
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+##### - Acesse a pasta do projeto
+```bash
+cd desafio-gen-frontend
+```
 
-## Running unit tests
+##### - Faça a instalação dos pacotes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+```
 
-## Running end-to-end tests
+##### - Rode a aplicação
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+ng serve
+```
