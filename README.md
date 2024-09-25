@@ -1,7 +1,7 @@
 # Bem vindo(a)
 Esta é uma aplicação Angular com GraphQL e Apollo Client.
 
-#### Aqui está o [Back-end](https://github.com/filiperv7/desafio-gen-backend/) desta aplicação.
+#### Aqui está o [Back-end](https://github.com/filiperv7/question-tech_back) desta aplicação.
 
 A aplicação tem como foco ajudar nos estudos dos devs, com a oportunidade de tirar dúvidas com pessoas mais experiêntes. Funciona assim:
 - crie sua conta;
